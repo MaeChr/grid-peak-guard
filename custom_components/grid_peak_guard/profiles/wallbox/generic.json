@@ -1,0 +1,11 @@
+{
+  "id": "generic",
+  "name": "Generic wallbox (charging current)",
+  "category": "wallbox",
+  "defaults": {"priority": 20, "reduce_value": "6", "min_power_w": 500},
+  "suggestions": {
+    "control_entity": "(charging_current|charge_current|max_current|_amp$)",
+    "power_entity": "(wallbox|charger|charging).*power"
+  },
+  "notes": "6 A is the lowest current most chargers accept; use a switch entity with reduce_value off to pause instead."
+}

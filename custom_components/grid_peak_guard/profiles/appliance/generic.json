@@ -1,0 +1,11 @@
+{
+  "id": "generic",
+  "name": "Appliance on smart plug (delay start only)",
+  "category": "appliance",
+  "defaults": {"priority": 30, "standby_w": 5, "idle_min": 10, "max_delay_min": 60},
+  "suggestions": {
+    "control_entity": "(wash|dish|dryer|wasch|spuel|trockner)",
+    "power_entity": "(wash|dish|dryer|wasch|spuel|trockner).*power"
+  },
+  "notes": "Only use with appliances that start (or keep a delayed start) after power returns."
+}

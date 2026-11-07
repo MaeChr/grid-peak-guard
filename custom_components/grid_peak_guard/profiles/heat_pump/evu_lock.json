@@ -1,0 +1,15 @@
+{
+  "id": "evu_lock",
+  "name": "Heat pump with utility lock contact (EVU)",
+  "category": "heat_pump",
+  "defaults": {
+    "priority": 35, "reduce_value": "on", "run_threshold_w": 300,
+    "min_runtime_min": 10, "max_block_min": 30, "max_block_day_min": 120, "min_pause_min": 30
+  },
+  "suggestions": {
+    "control_entity": "(evu|utility_lock|sperr)",
+    "power_entity": "(heat_pump|waermepumpe|wp).*power",
+    "outdoor_temp_entity": "(outdoor|outside|aussen).*temp"
+  },
+  "notes": "reduce_value 'on' activates the lock relay; invert to 'off' if your relay is active-low."
+}

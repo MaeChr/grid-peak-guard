@@ -1,0 +1,14 @@
+- {name: P0, color: b60205, description: "Safety or control error"}
+- {name: P1, color: d93f0b, description: "Core function broken"}
+- {name: P2, color: fbca04, description: "Limited function, workaround exists"}
+- {name: P3, color: 0e8a16, description: "Wish or cosmetic"}
+- {name: bug, color: d73a4a, description: "Something is not working"}
+- {name: enhancement, color: a2eeef, description: "New feature or request"}
+- {name: device-profile, color: 5319e7, description: "New or changed device profile"}
+- {name: documentation, color: 0075ca, description: "Documentation"}
+- {name: question, color: d876e3, description: "Question"}
+- {name: needs-info, color: cccccc, description: "Waiting for information from the reporter"}
+- {name: confirmed, color: 1d76db, description: "Reproduced"}
+- {name: in-progress, color: c5def5, description: "Being worked on"}
+- {name: wontfix, color: ffffff, description: "Will not be fixed"}
+- {name: duplicate, color: cfd3d7, description: "Duplicate"}

@@ -1,0 +1,7 @@
+{
+  "id": "generic",
+  "name": "Power sensor (monitor only)",
+  "category": "monitor",
+  "defaults": {"priority": 99},
+  "suggestions": {}
+}

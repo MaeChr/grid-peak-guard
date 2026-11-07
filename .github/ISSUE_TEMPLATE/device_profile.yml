@@ -1,0 +1,30 @@
+name: Device profile / Geräteprofil
+description: Request a profile for a device model / Profil für ein Gerätemodell anfragen
+labels: [device-profile]
+body:
+  - type: input
+    id: model
+    attributes:
+      label: Manufacturer and model / Hersteller und Modell
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category / Kategorie
+      options: [battery, wallbox, modulating, switchable, heat_pump, appliance, monitor]
+    validations:
+      required: true
+  - type: input
+    id: integration
+    attributes:
+      label: Home Assistant integration used for the device
+    validations:
+      required: true
+  - type: textarea
+    id: entities
+    attributes:
+      label: Relevant entities / Relevante Entitäten
+      description: Entity IDs (pattern is enough), unit, value range and which value reduces consumption.
+    validations:
+      required: true

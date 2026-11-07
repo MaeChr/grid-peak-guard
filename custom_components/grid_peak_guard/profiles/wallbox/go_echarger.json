@@ -1,0 +1,11 @@
+{
+  "id": "go_echarger",
+  "name": "go-e Charger (current limit)",
+  "category": "wallbox",
+  "defaults": {"priority": 20, "reduce_value": "6", "min_power_w": 500},
+  "suggestions": {
+    "control_entity": "go_?e.*(amp|current)",
+    "power_entity": "go_?e.*power"
+  },
+  "notes": "Entity names depend on the installed go-e integration; check the suggestion."
+}

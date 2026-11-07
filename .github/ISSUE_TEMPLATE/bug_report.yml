@@ -1,0 +1,44 @@
+name: Bug report / Fehlerbericht
+description: Something does not work as expected / Etwas funktioniert nicht wie erwartet
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please remove tokens, passwords and personal data. / Bitte Tokens, Passwörter und persönliche Daten entfernen.
+  - type: input
+    id: ha_version
+    attributes:
+      label: Home Assistant version
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Grid Peak Guard version
+    validations:
+      required: true
+  - type: dropdown
+    id: simulation
+    attributes:
+      label: Simulation mode
+      options: ["on / an", "off / aus"]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened? / Was ist passiert?
+      description: Expected vs. actual behaviour / Erwartet vs. tatsächlich
+    validations:
+      required: true
+  - type: textarea
+    id: devices
+    attributes:
+      label: Configured device categories / Konfigurierte Gerätekategorien
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / diagnostics
+      description: Download diagnostics from the device page (entity IDs are redacted).
+      render: text

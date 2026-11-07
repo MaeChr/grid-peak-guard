@@ -1,0 +1,12 @@
+{
+  "id": "generic",
+  "name": "Generic battery (number/select/switch)",
+  "category": "battery",
+  "defaults": {"priority": 10, "min_soc": 10},
+  "suggestions": {
+    "control_entity": "(grid_charg|charge_from_grid|max_charg)",
+    "soc_entity": "(state_of_charge|battery_soc|_soc$)",
+    "power_entity": "battery.*power"
+  },
+  "notes": "Set reduce_value to the value that stops grid charging, e.g. 0 for a maximum charge power entity."
+}

@@ -1,0 +1,201 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Grid Peak Guard einrichten",
+        "description": "Hält den gemittelten Netzbezug je Messfenster unter einem Ziel. Starte im Simulationsmodus: Entscheidungen werden nur protokolliert, bis du ihn ausschaltest.",
+        "data": {
+          "name": "Name",
+          "grid_power_entity": "Sensor Netzleistung",
+          "invert_grid_power": "Vorzeichen umkehren (Sensor meldet Bezug negativ)",
+          "import_energy_entity": "Zähler Netzbezug (optional)",
+          "target_kw": "Ziel-Mittelleistung",
+          "simulation": "Im Simulationsmodus starten"
+        },
+        "data_description": {
+          "grid_power_entity": "Positive Werte = Bezug aus dem Netz, negative = Einspeisung. W oder kW.",
+          "import_energy_entity": "Wenn gesetzt, wird die Fensterenergie aus diesem Zähler statt aus der integrierten Leistung berechnet."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Dieser Netzleistungssensor ist bereits eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Grid Peak Guard",
+        "menu_options": {
+          "settings": "Allgemeine Einstellungen",
+          "tariff": "Tarif",
+          "add_device": "Gerät hinzufügen",
+          "edit_device": "Gerät bearbeiten",
+          "remove_device": "Gerät entfernen"
+        }
+      },
+      "settings": {
+        "title": "Allgemeine Einstellungen",
+        "data": {
+          "grid_power_entity": "Sensor Netzleistung",
+          "invert_grid_power": "Vorzeichen umkehren (Sensor meldet Bezug negativ)",
+          "import_energy_entity": "Zähler Netzbezug (optional)",
+          "target_kw": "Ziel-Mittelleistung",
+          "minimum_kw": "Verrechnete Mindestleistung",
+          "hard_margin_kw": "Abstand der harten Grenze über dem Limit",
+          "window_minutes": "Messfenster (Minuten)",
+          "escalation_wait_s": "Wartezeit zwischen Eskalationsstufen",
+          "settle_s": "Einschwingzeit am Fensteranfang",
+          "update_interval_s": "Aktualisierungsintervall",
+          "use_month_peak": "Limit auf bisherigen Monats-Peak anheben"
+        },
+        "data_description": {
+          "grid_power_entity": "Positive Werte = Bezug aus dem Netz, negative = Einspeisung. W oder kW.",
+          "import_energy_entity": "Wenn gesetzt, wird die Fensterenergie aus diesem Zähler statt aus der integrierten Leistung berechnet.",
+          "hard_margin_kw": "Erreicht die Hochrechnung Limit + Abstand, werden alle Stufen sofort aktiviert.",
+          "use_month_peak": "Unter einen in diesem Monat bereits verrechneten Peak zu regeln spart nichts."
+        }
+      },
+      "tariff": {
+        "title": "Tarif",
+        "data": {
+          "energy_price": "Energiepreis pro kWh (fix)",
+          "price_entity": "Preis-Entität (optional, ersetzt Fixpreis)",
+          "grid_energy_price": "Netz-Arbeitspreis pro kWh",
+          "power_price": "Leistungspreis pro kW und Monat",
+          "power_threshold_kw": "Schwelle für erhöhten Leistungspreis",
+          "power_factor_above": "Faktor für Leistung über der Schwelle"
+        }
+      },
+      "add_device": {
+        "title": "Gerät hinzufügen",
+        "description": "Gerätekategorie wählen.",
+        "data": {
+          "category": "Gerät hinzufügen"
+        }
+      },
+      "profile": {
+        "title": "Gerätemodell",
+        "data": {
+          "profile": "Profil"
+        }
+      },
+      "device": {
+        "title": "Gerät ({category})",
+        "description": "Eingriffe werden am Ende jedes Fensters und beim Entladen zurückgesetzt. Zuerst im Simulationsmodus testen.",
+        "data": {
+          "name": "Name",
+          "priority": "Priorität (kleiner = zuerst reduziert)",
+          "control_entity": "Steuer-Entität",
+          "reduce_value": "Wert während der Reduktion",
+          "power_entity": "Leistungssensor",
+          "soc_entity": "Ladezustand",
+          "min_soc": "Mindest-Ladezustand",
+          "min_power_w": "Mindestverbrauch für Eingriff",
+          "max_off_min": "Maximale Ausschaltdauer",
+          "run_threshold_w": "Laufschwelle",
+          "outdoor_temp_entity": "Außentemperatur",
+          "next_start_entity": "Externer nächster Startzeitpunkt",
+          "min_runtime_min": "Mindestlaufzeit vor Sperre",
+          "max_block_min": "Maximale Sperrdauer",
+          "max_block_day_min": "Maximale Sperrzeit pro Tag",
+          "min_pause_min": "Mindestpause zwischen Sperren",
+          "budget_reserve": "Budget für erwartete Starts reservieren",
+          "standby_w": "Standby-Leistung",
+          "idle_min": "Ruhezeit, bevor der Start verzögert werden darf",
+          "max_delay_min": "Maximale Startverzögerung"
+        },
+        "data_description": {
+          "reduce_value": "Wird während der Reduktion gesetzt: on/off bei Schaltern, eine Zahl, ein Optionstext oder eine Temperatur. Der vorherige Wert wird am Fensterende wiederhergestellt.",
+          "control_entity": "Bei Wärmepumpen optional: ohne Steuer-Entität wird nur prognostiziert.",
+          "idle_min": "Ein laufendes Programm wird nie unterbrochen: Der Start wird erst verzögert, wenn das Gerät so lange ruht.",
+          "next_start_entity": "Hat Vorrang vor den gelernten Startzeiten."
+        }
+      },
+      "edit_device": {
+        "title": "Gerät bearbeiten",
+        "data": {
+          "id": "Gerät"
+        }
+      },
+      "remove_device": {
+        "title": "Gerät entfernen",
+        "data": {
+          "id": "Gerät"
+        }
+      }
+    },
+    "error": {
+      "reduce_value_required": "Bei gesetzter Steuer-Entität ist ein Wert erforderlich."
+    }
+  },
+  "selector": {
+    "category": {
+      "options": {
+        "battery": "Batteriespeicher",
+        "wallbox": "Wallbox",
+        "modulating": "Modulierender Verbraucher",
+        "switchable": "Schaltbarer Verbraucher",
+        "heat_pump": "Wärmepumpe",
+        "appliance": "Haushaltsgerät (nur Start verzögern)",
+        "monitor": "Nur beobachten"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "projected_power": {
+        "name": "Hochrechnung Fenstermittel"
+      },
+      "window_average": {
+        "name": "Bisheriges Fenstermittel"
+      },
+      "effective_limit": {
+        "name": "Wirksames Limit"
+      },
+      "required_reduction": {
+        "name": "Erforderliche Reduktion"
+      },
+      "month_peak": {
+        "name": "Monats-Peak"
+      },
+      "last_window_average": {
+        "name": "Mittel letztes Fenster"
+      },
+      "window_energy": {
+        "name": "Fensterenergie"
+      },
+      "escalation_level": {
+        "name": "Eskalationsstufe"
+      },
+      "monthly_power_cost": {
+        "name": "Monatlicher Leistungspreis"
+      },
+      "monthly_cost_estimate": {
+        "name": "Monatliche Kostenschätzung"
+      },
+      "heat_pump_next_start": {
+        "name": "{device} nächster erwarteter Start"
+      },
+      "heat_pump_start_probability": {
+        "name": "{device} Startwahrscheinlichkeit"
+      }
+    },
+    "binary_sensor": {
+      "limit_at_risk": {
+        "name": "Limit gefährdet"
+      },
+      "intervention_active": {
+        "name": "Eingriff aktiv"
+      }
+    },
+    "switch": {
+      "control": {
+        "name": "Steuerung"
+      },
+      "simulation": {
+        "name": "Simulationsmodus"
+      }
+    }
+  }
+}
