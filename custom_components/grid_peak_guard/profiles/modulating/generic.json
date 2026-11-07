@@ -1,0 +1,11 @@
+{
+  "id": "generic",
+  "name": "Generic modulating load (setpoint/power level)",
+  "category": "modulating",
+  "defaults": {"priority": 25},
+  "suggestions": {
+    "control_entity": "(heating_rod|heizstab|power_limit|setpoint)",
+    "power_entity": "(heating_rod|heizstab).*power"
+  },
+  "notes": "reduce_value is applied as an absolute value (number, option or temperature)."
+}

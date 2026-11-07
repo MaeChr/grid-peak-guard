@@ -1,0 +1,8 @@
+{
+  "id": "generic",
+  "name": "Generic switch / smart plug",
+  "category": "switchable",
+  "defaults": {"priority": 30, "min_power_w": 50, "max_off_min": 15},
+  "suggestions": {"power_entity": "_power$"},
+  "notes": "Only for loads that tolerate being switched off (e.g. heaters, pumps with buffer)."
+}

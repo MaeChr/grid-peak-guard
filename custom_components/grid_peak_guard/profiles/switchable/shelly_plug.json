@@ -1,0 +1,10 @@
+{
+  "id": "shelly_plug",
+  "name": "Shelly plug",
+  "category": "switchable",
+  "defaults": {"priority": 30, "min_power_w": 50, "max_off_min": 15},
+  "suggestions": {
+    "control_entity": "^switch\\.shelly",
+    "power_entity": "^sensor\\.shelly.*power"
+  }
+}

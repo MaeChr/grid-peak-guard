@@ -1,0 +1,201 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up Grid Peak Guard",
+        "description": "Keeps the averaged grid import per measuring window below a target. Start in simulation mode: decisions are only logged until you switch it off.",
+        "data": {
+          "name": "Name",
+          "grid_power_entity": "Grid power sensor",
+          "invert_grid_power": "Invert sign (sensor reports import as negative)",
+          "import_energy_entity": "Grid import energy meter (optional)",
+          "target_kw": "Target average power",
+          "simulation": "Start in simulation mode"
+        },
+        "data_description": {
+          "grid_power_entity": "Positive values = import from the grid, negative = export. W or kW.",
+          "import_energy_entity": "If set, the window energy is taken from this meter instead of integrating the power."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "This grid power sensor is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Grid Peak Guard",
+        "menu_options": {
+          "settings": "General settings",
+          "tariff": "Tariff",
+          "add_device": "Add device",
+          "edit_device": "Edit device",
+          "remove_device": "Remove device"
+        }
+      },
+      "settings": {
+        "title": "General settings",
+        "data": {
+          "grid_power_entity": "Grid power sensor",
+          "invert_grid_power": "Invert sign (sensor reports import as negative)",
+          "import_energy_entity": "Grid import energy meter (optional)",
+          "target_kw": "Target average power",
+          "minimum_kw": "Billed minimum power",
+          "hard_margin_kw": "Hard limit margin above the limit",
+          "window_minutes": "Measuring window (minutes)",
+          "escalation_wait_s": "Waiting time between escalation stages",
+          "settle_s": "Settling time at window start",
+          "update_interval_s": "Update interval",
+          "use_month_peak": "Raise limit to the month peak so far"
+        },
+        "data_description": {
+          "grid_power_entity": "Positive values = import from the grid, negative = export. W or kW.",
+          "import_energy_entity": "If set, the window energy is taken from this meter instead of integrating the power.",
+          "hard_margin_kw": "If the projection reaches limit + margin, all stages are engaged at once.",
+          "use_month_peak": "Reducing below a peak that is already billed this month saves nothing."
+        }
+      },
+      "tariff": {
+        "title": "Tariff",
+        "data": {
+          "energy_price": "Energy price per kWh (fixed)",
+          "price_entity": "Energy price entity (optional, overrides fixed price)",
+          "grid_energy_price": "Grid energy charge per kWh",
+          "power_price": "Power charge per kW and month",
+          "power_threshold_kw": "Threshold for higher power charge",
+          "power_factor_above": "Factor for power above the threshold"
+        }
+      },
+      "add_device": {
+        "title": "Add device",
+        "description": "Choose the device category.",
+        "data": {
+          "category": "Add device"
+        }
+      },
+      "profile": {
+        "title": "Device model",
+        "data": {
+          "profile": "Profile"
+        }
+      },
+      "device": {
+        "title": "Device ({category})",
+        "description": "Interventions are restored at the end of each window and on unload. Test in simulation mode first.",
+        "data": {
+          "name": "Name",
+          "priority": "Priority (lower = reduced first)",
+          "control_entity": "Control entity",
+          "reduce_value": "Value while reduced",
+          "power_entity": "Power sensor",
+          "soc_entity": "State of charge",
+          "min_soc": "Minimum state of charge",
+          "min_power_w": "Minimum consumption to act",
+          "max_off_min": "Maximum off time",
+          "run_threshold_w": "Running threshold",
+          "outdoor_temp_entity": "Outdoor temperature",
+          "next_start_entity": "External next start time",
+          "min_runtime_min": "Minimum runtime before lock",
+          "max_block_min": "Maximum lock duration",
+          "max_block_day_min": "Maximum lock time per day",
+          "min_pause_min": "Minimum pause between locks",
+          "budget_reserve": "Reserve budget for expected starts",
+          "standby_w": "Standby power",
+          "idle_min": "Idle time before start may be delayed",
+          "max_delay_min": "Maximum start delay"
+        },
+        "data_description": {
+          "reduce_value": "Applied to the control entity while reduced: on/off for switches, a number, an option text or a temperature. The previous value is restored at window end.",
+          "control_entity": "Optional for heat pumps: without it the heat pump is only forecast.",
+          "idle_min": "A running program is never interrupted: the start is only delayed after the appliance was idle this long.",
+          "next_start_entity": "Takes precedence over the learned start times."
+        }
+      },
+      "edit_device": {
+        "title": "Edit device",
+        "data": {
+          "id": "Device"
+        }
+      },
+      "remove_device": {
+        "title": "Remove device",
+        "data": {
+          "id": "Device"
+        }
+      }
+    },
+    "error": {
+      "reduce_value_required": "A value is required when a control entity is set."
+    }
+  },
+  "selector": {
+    "category": {
+      "options": {
+        "battery": "Battery storage",
+        "wallbox": "Wallbox",
+        "modulating": "Modulating load",
+        "switchable": "Switchable load",
+        "heat_pump": "Heat pump",
+        "appliance": "Household appliance (delay start only)",
+        "monitor": "Monitor only"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "projected_power": {
+        "name": "Projected window average"
+      },
+      "window_average": {
+        "name": "Window average so far"
+      },
+      "effective_limit": {
+        "name": "Effective limit"
+      },
+      "required_reduction": {
+        "name": "Required reduction"
+      },
+      "month_peak": {
+        "name": "Month peak"
+      },
+      "last_window_average": {
+        "name": "Last window average"
+      },
+      "window_energy": {
+        "name": "Window energy"
+      },
+      "escalation_level": {
+        "name": "Escalation level"
+      },
+      "monthly_power_cost": {
+        "name": "Monthly power charge"
+      },
+      "monthly_cost_estimate": {
+        "name": "Monthly cost estimate"
+      },
+      "heat_pump_next_start": {
+        "name": "{device} next expected start"
+      },
+      "heat_pump_start_probability": {
+        "name": "{device} start probability"
+      }
+    },
+    "binary_sensor": {
+      "limit_at_risk": {
+        "name": "Limit at risk"
+      },
+      "intervention_active": {
+        "name": "Intervention active"
+      }
+    },
+    "switch": {
+      "control": {
+        "name": "Control"
+      },
+      "simulation": {
+        "name": "Simulation mode"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+name: Feature request / Funktionswunsch
+description: Suggest an improvement / Verbesserung vorschlagen
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / use case
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution / Lösungsvorschlag
+  - type: input
+    id: country
+    attributes:
+      label: Country / grid operator (if tariff related)

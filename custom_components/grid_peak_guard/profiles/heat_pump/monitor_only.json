@@ -1,0 +1,11 @@
+{
+  "id": "monitor_only",
+  "name": "Heat pump (forecast only, no control)",
+  "category": "heat_pump",
+  "defaults": {"priority": 35, "run_threshold_w": 300, "budget_reserve": true},
+  "suggestions": {
+    "power_entity": "(heat_pump|waermepumpe|wp).*power",
+    "outdoor_temp_entity": "(outdoor|outside|aussen).*temp"
+  },
+  "notes": "Learns start times and reserves budget, never controls the heat pump."
+}

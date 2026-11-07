@@ -1,0 +1,15 @@
+{
+  "id": "sg_ready",
+  "name": "Heat pump with SG-Ready (select)",
+  "category": "heat_pump",
+  "defaults": {
+    "priority": 35, "reduce_value": "1", "run_threshold_w": 300,
+    "min_runtime_min": 10, "max_block_min": 30, "max_block_day_min": 120, "min_pause_min": 30
+  },
+  "suggestions": {
+    "control_entity": "sg_?ready",
+    "power_entity": "(heat_pump|waermepumpe|wp).*power",
+    "outdoor_temp_entity": "(outdoor|outside|aussen).*temp"
+  },
+  "notes": "SG-Ready state 1 is the lock state; set reduce_value to the option text your select uses."
+}

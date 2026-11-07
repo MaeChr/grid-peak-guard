@@ -1,0 +1,13 @@
+{
+  "domain": "grid_peak_guard",
+  "name": "Grid Peak Guard",
+  "codeowners": ["@MaeChr"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/MaeChr/grid-peak-guard",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/MaeChr/grid-peak-guard/issues",
+  "requirements": [],
+  "version": "0.2.0"
+}
